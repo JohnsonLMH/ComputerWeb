@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+<link rel="stylesheet" href="~/css/register.css" type="text/css">
+<title>Register</title>
+</head>
+
+<body>
+
+
+<!--注册-->
+<div>
+	<div class="top-content">
+		<div class="inner-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 form-box">
+						<form role="form" action="" method="post" class="registration-form">
+							<div class="form-top">
+								<div class="form-top-left">
+									<h3>注册</h3>
+									<p>请输入相关信息以完成注册：</p>
+								</div>
+								<div class="form-top-right">
+									<i class="fa fa-user"></i>
+								</div>
+							</div>
+							<div class="form-bottom">
+								<div class="form-group">
+									<label class="sr-only" for="form-last-name">用户名</label>
+									<input type="text" name="form-last-name" placeholder="user name..." class="form-last-name form-control" id="form-last-name" required autofocus>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-email">电子邮箱</label>
+									<input type="text" name="form-email" placeholder="address@site.com..." class="form-email form-control" id="form-email" multiple>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-password">密码</label>
+									<input type="text" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required autofocus>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-repeat-password">确认密码</label>
+									<input type="text" name="form-repeat-password" placeholder="Repeat Password..." class="form-repeat-password form-control" id="form-repeat-password" required autofocus>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-realy-name">真实姓名</label>
+									<input type="text" name="form-realy-name" placeholder="Name..." class="form-realy-name form-control" id="form-realy-name" required autofocus>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-brithday">出生年月</label>
+									<input type="text" name="form-birthday" placeholder="Birthday..." class="form-birthday form-control" id="form-birthday" required autofocus>
+								</div>
+								<button type="button" class="btn btn-block">提交</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+	
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) --> 
+<script src="~/lib/jquery/jquery-1.11.0.min.js"></script> 
+<!-- 包括所有已编译的插件 --> 
+<script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

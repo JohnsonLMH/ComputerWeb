@@ -1,0 +1,215 @@
+body
+{
+	/*padding-top:50px;/*当导航条置顶时，body需要下拉50px或以上.*/
+	text-align: center;
+	color: #CECECE;
+}
+
+nav
+{
+	margin-top:10px;	
+}
+
+/*设置网站LOGO的大小及位置*/
+.navbar-brand{
+	padding:0 0;	
+}
+.navbar-brand>img{
+	height:80px;
+	margin-right:5px;
+	margin-top: -15px;
+	width:150px;	
+}
+
+.navbar-default{
+	padding:1.5em 0;
+	background-color:#FFF;
+}
+
+/*修改导航列表中的文字*/
+.navbar-default .navbar-nav>li a {
+	top:10px;
+	padding:0.5em 2em;/*导航列表内容之间拉开距离*/
+	text-decoration:none;
+	font-weight:600;/*加粗*/
+	font-size:1.2em;
+	color:#919191;/*前景色：字体颜色*/
+}
+
+/*当鼠标停靠在导航项目上时，显示的样式*/
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+	background:#999999;	/*背景色：框体内颜色*/
+	color:white;		/*前景色：字体颜色*/
+	border-radius:3px;	/*圆角*/
+	-webkit-border-radius:3px;
+}
+
+/*子菜单的文字颜色*/
+.navbar-right>a{
+	color:#D96B66;
+}
+
+/*Bootstrap的媒体查询功能*/
+/*当屏幕宽度小于970px时，菜单字体变小为1.1倍。*/
+@media(max-width:970px){
+	.navbar-default .navbar-nav>li a{
+		font-size:1.1em;
+	}
+}
+
+.inner-bg{
+	background: #CCCCCC;
+	padding: 40px;
+}
+
+.form-top{
+	overflow: hidden;
+	padding: 0 25px;
+	background: #fff;
+	border-radius: 4px 4px 0 0;
+	text-align: left;
+}
+
+.form-top-left{
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.form-top-left h3{
+	margin-top: 0;
+}
+
+.form-top-right{
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+.form-bottom{
+	padding: 0 25px 30px 25px;
+	background: #fff;
+	border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
+form .form-bottom textarea { 
+	height: 100px; 
+} 
+
+form .form-bottom button.btn { 
+	min-width: 105px; 
+	color: #FFF;
+	background: #3288C9;
+} 
+
+form .form-bottom .input-error { 
+	border-color: #989898; 
+} 
+
+form.registration-form fieldset {
+	display: none;
+}
+
+/*footer部分*/
+.footer p {
+    color: #919191;
+    font-size: 1em;
+    line-height: 1.8em;
+    vertical-align: middle;
+    margin: 0.4em 0;
+}
+.footer p a{
+    color: #919191;
+    text-decoration:none;
+}
+.footer {
+    margin-top:30px;
+    padding: 1em 0;
+    background-color:#CCCCCC;
+}
+.footer-right ul {
+    padding-top: 10px;
+}
+.footer-right li {
+    display: inline-block;
+    margin: 0 1em;
+}
+.footer-left {
+    float: left;
+}
+.footer-right {
+    float: right;
+}
+/*设置字体图标的大小和颜色*/
+.glyphicon{
+    font-size: 1.2em;
+    color: #919191;
+}
+
+.container ul{
+	list-style: none;
+}
+
+.container ul li a{
+	color: #BEBEBE;
+	margin-right: 40px;
+}
+
+.container button{
+	background: #fff;
+	height: 50px;
+	width: 200px;
+}
+
+.container p{
+	padding-top: 5px;
+}
+
+.container h3{
+	color: #858585;
+}
+
+.top-content .fogot{
+	padding-left: 70px;
+}
+
+#summary-container1 .col-sm-3{
+	text-align: center;
+}
+
+#summary-container1 img{
+	width: 200px;
+	height: 150px;
+}
+	
+#summary-container1 h2 {
+	margin-right: 60px;
+}
+
+#summary-container1 a {
+	margin-right: 45px;
+}
+
+#summary-container .col-sm-3{
+	text-align: center;
+}
+
+#summary-container img{
+	width: 200px;
+	height: 150px;
+	padding-left: 60px;
+}
+	
+#summary-container h2 {
+	margin-right: 60px;
+}
+
+#summary-container a {
+	margin-right: 60px;
+}

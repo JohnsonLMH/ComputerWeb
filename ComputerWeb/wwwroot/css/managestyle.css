@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	padding-top: 10px;
+}
+
+.navbar-header p{
+	text-align: center;
+	font-size: 50px;
+}
+
+.navbar-header a{
+	text-align: right;
+}
+
+.container-fluid{
+	height: 100px;
+	background:#A9A9A9;
+}
+
+.navbar-brand{
+	padding: 0 0;
+}
+
+#userimg img{
+	height:80px;
+	margin-right: 5px;
+	margin-top: -5px;
+	width: 100px;
+}
+
+.userid{
+	float: right;
+	margin-top: 45px;
+}
+
+.row-fluid{
+	margin-top: 20px;
+}
+

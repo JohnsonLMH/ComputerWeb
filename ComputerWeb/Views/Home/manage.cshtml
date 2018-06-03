@@ -1,0 +1,549 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>manage</title>
+<link href="~/css/managestyle.css" type="text/css" rel="stylesheet">
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<div class="title">
+			<p>网络电脑销售系统管理系统</p>	
+		</div>
+		<a>用户名&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a href="#">退出</a>		
+	</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-sm-2">
+			<ul class="nav nav-stacked nav-pills" role="tablist">
+				<li class="active"><a href="#manage1" role="tab" data-toggle="tab">商品管理</a></li>
+				<li><a href="#manage2" role="tab" data-toggle="tab">用户管理</a></li>
+				<li><a href="#manage3" role="tab" data-toggle="tab">订单管理</a></li>
+				<li><a href="#manage4" role="tab" data-toggle="tab">员工管理</a></li>
+				<li><a href="#manage5" role="tab" data-toggle="tab">个人中心</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-10">
+            <div class="tab-content">
+                <div class="tab-pane active" id="manage1" role="tabpanel">
+                    <form class="form-search">
+                        <input class="input-medium search-query" type="text" />
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    编号
+                                </th>
+                                <th>
+                                    产品ID
+                                </th>
+                                <th>
+                                    产品名称
+                                </th>
+                                <th>
+                                    价格
+                                </th>
+                                <th>
+                                    产品状态
+                                </th>
+                                <th>
+                                    上市时间
+                                </th>
+                                <th>
+                                    cpu型号
+                                </th>
+                                <th>
+                                    内存
+                                </th>
+                                <th>
+                                    硬盘容量
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Approved
+                                </td>
+                            </tr>
+                            <tr class="error">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    02/04/2012
+                                </td>
+                                <td>
+                                    Declined
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    03/04/2012
+                                </td>
+                                <td>
+                                    Pending
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    04/04/2012
+                                </td>
+                                <td>
+                                    Call in to confirm
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="manage2" role="tabpanel">
+                    <form class="form-search">
+                        <input class="input-medium search-query" type="text" />
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    编号
+                                </th>
+                                <th>
+                                    用户ID
+                                </th>
+                                <th>
+                                    用户名
+                                </th>
+                                <th>
+                                    密码
+                                </th>
+                                <th>
+                                    角色
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Approved
+                                </td>
+                            </tr>
+                            <tr class="error">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    02/04/2012
+                                </td>
+                                <td>
+                                    Declined
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    03/04/2012
+                                </td>
+                                <td>
+                                    Pending
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    04/04/2012
+                                </td>
+                                <td>
+                                    Call in to confirm
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="manage3" role="tabpanel">
+                    <form class="form-search">
+                        <input class="input-medium search-query" type="text" />
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    编号
+                                </th>
+                                <th>
+                                    订单ID
+                                </th>
+                                <th>
+                                    成交时间
+                                </th>
+                                <th>
+                                    状态
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Approved
+                                </td>
+                            </tr>
+                            <tr class="error">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    02/04/2012
+                                </td>
+                                <td>
+                                    Declined
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    03/04/2012
+                                </td>
+                                <td>
+                                    Pending
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    04/04/2012
+                                </td>
+                                <td>
+                                    Call in to confirm
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="manage4" role="tabpanel">
+                    <form class="form-search">
+                        <input class="input-medium search-query" type="text" />
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    编号
+                                </th>
+                                <th>
+                                    员工ID
+                                </th>
+                                <th>
+                                    员工姓名
+                                </th>
+                                <th>
+                                    密码
+                                </th>
+                                <th>
+                                    状态
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Approved
+                                </td>
+                            </tr>
+                            <tr class="error">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    02/04/2012
+                                </td>
+                                <td>
+                                    Declined
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    03/04/2012
+                                </td>
+                                <td>
+                                    Pending
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    04/04/2012
+                                </td>
+                                <td>
+                                    Call in to confirm
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="manage5" role="tabpanel">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    用户ID
+                                </th>
+                                <th>
+                                    姓名
+                                </th>
+                                <th>
+                                    职位
+                                </th>
+                                <th>
+                                    状态
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Approved
+                                </td>
+                            </tr>
+                            <tr class="error">
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    02/04/2012
+                                </td>
+                                <td>
+                                    Declined
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    03/04/2012
+                                </td>
+                                <td>
+                                    Pending
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    04/04/2012
+                                </td>
+                                <td>
+                                    Call in to confirm
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>		
+		</div>
+		
+	</div>
+
+	<script src="~/lib/jquery/dist/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

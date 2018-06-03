@@ -1,0 +1,11 @@
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\bin\Debug\netcoreapp2.0\ComputerWeb.deps.json
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\bin\Debug\netcoreapp2.0\ComputerWeb.runtimeconfig.json
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\bin\Debug\netcoreapp2.0\ComputerWeb.runtimeconfig.dev.json
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\bin\Debug\netcoreapp2.0\ComputerWeb.dll
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\bin\Debug\netcoreapp2.0\ComputerWeb.pdb
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.csproj.CoreCompileInputs.cache
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.AssemblyInfoInputs.cache
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.AssemblyInfo.cs
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.dll
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.pdb
+C:\Users\hui34\Desktop\ComputerWeb\ComputerWeb\obj\Debug\netcoreapp2.0\ComputerWeb.csprojResolveAssemblyReference.cache

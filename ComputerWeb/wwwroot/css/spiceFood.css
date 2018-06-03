@@ -1,0 +1,229 @@
+body {
+    padding-top: 50px; /*当导航条置顶时，body需要下拉50px或以上.*/
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+}
+
+nav
+{
+	margin-top:10px;	
+}
+
+/*设置网站LOGO的大小及位置*/
+.navbar-brand{
+	padding:0 0;	
+}
+.navbar-brand>img{
+	height:80px;
+	margin-right:5px;
+	margin-top: -15px;
+	width:150px;	
+}
+
+.navbar-default{
+	padding:1.5em 0;
+	background-color:#FFF;
+}
+
+/*修改导航列表中的文字*/
+.navbar-default .navbar-nav>li a {
+	top:10px;
+	padding:0.5em 2em;/*导航列表内容之间拉开距离*/
+	text-decoration:none;
+	font-weight:600;/*加粗*/
+	font-size:1.2em;
+	color:#919191;/*前景色：字体颜色*/
+}
+
+/*当鼠标停靠在导航项目上时，显示的样式*/
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+	background:#999999;	/*背景色：框体内颜色*/
+	color:white;		/*前景色：字体颜色*/
+	border-radius:3px;	/*圆角*/
+	-webkit-border-radius:3px;
+}
+
+/*子菜单的文字颜色*/
+.navbar-right>a{
+	color:#D96B66;
+}
+
+/*Bootstrap的媒体查询功能*/
+/*当屏幕宽度小于970px时，菜单字体变小为1.1倍。*/
+@media(max-width:970px){
+	.navbar-default .navbar-nav>li a{
+		font-size:1.1em;
+	}
+}
+
+/*滚动*/
+.carousel{
+	height:500px;
+	background-color:#FFF;
+	margin-bottom:30px;
+	}
+
+.carousel .item{
+	height:500px;
+	background-color:#FFF;
+	}
+	
+.carousel img{
+	width:100%;
+	background-color:#FFF;
+	}
+
+.carousel-caption p{
+	margin-bottom:20px;
+	font-size:16px;
+	line-height:28px;
+	}
+
+
+
+
+#summary-container .col-sm-4{
+	text-align:center;
+	
+	
+}
+
+#summary-container img{
+	width:200px;
+
+	
+}
+
+
+
+
+/*footer部分*/
+.footer p {
+    color: #919191;
+    font-size: 1em;
+    line-height: 1.8em;
+    vertical-align: middle;
+    margin: 0.4em 0;
+}
+.footer p a{
+    color: #919191;
+    text-decoration:none;
+}
+.footer {
+    margin-top:30px;
+    padding: 1em 0;
+    background-color:#CCCCCC;
+}
+.footer-right ul {
+    padding: 0;
+}
+.footer-right li {
+    display: inline-block;
+    margin: 0 1em;
+}
+.footer-left {
+    float: left;
+}
+.footer-right {
+    float: right;
+}
+/*设置字体图标的大小和颜色*/
+.glyphicon{
+    font-size: 1.2em;
+    color: #919191;
+}
+
+
+.sub {
+	text-align: right;
+}
+.add-to-cart {
+	margin-left: 1.7em;
+}
+.sub p {
+	text-align: left;
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: 400;
+	padding: 0.7em 0 0 0em;
+}
+.sub span {
+	color: #ff0000;
+	font-size: 2.2em;
+	font-weight: 500;
+	text-align: left;
+	display: block;
+}
+
+.preview{
+	float: left;
+	width: 27%;
+	margin-right: 2%;
+	position:relative;
+}
+.preview img {
+	width: 100%;
+}
+
+.preview:hover i.bag{
+	width: 35px;
+	height: 35px;
+	background: url("../images/img-sprite.png") no-repeat -6px -25px;
+	display: inline-block;
+	cursor: pointer;
+	position: absolute;
+	top: 39%;
+	left: 42%;
+}
+
+button.cart-button span {
+	color: #fff;
+	background: #C800FF;
+	margin: 0;
+	font-size: 17px;
+	font-weight: 300;
+	padding: 0.6em 2em 0.6em 2em;
+}
+
+button.cart-button span:hover {
+	background: #ffd400;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
+.select{
+	float: left;
+	background: #484c4b;
+	padding: 3.36em 0;
+	width: 15%;
+}
+.select h2 {
+	font-weight: 700;
+	width: 63%;
+	margin: 0 auto;
+	font-size: 2em;
+	text-align: left;
+	line-height: 10em;
+	color: #fff;
+	font-family: 'Dancing Script', cursive;
+	text-transform: uppercase;
+}
+.nav-tabs{margin:10px 10px 10px 10px}
+.form-search{margin:10px 10px 10px 10px}
+
+#box1{margin:5px 5px 5px 5px}
+.carousel-control{
+	float:right;
+	margin:5px 5px 5px 5px}
+	
+blockquote{
+	color:#000000;
+	margin:10px 10px 10px 10px}
+	
+
+

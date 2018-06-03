@@ -1,0 +1,182 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* nav部分 开始 */
+nav
+{
+	margin-top:10px;	
+}
+
+/*设置网站LOGO的大小及位置*/
+.navbar-brand{
+	padding:0 0;	
+}
+.navbar-brand>img{
+	height:80px;
+	margin-right:5px;
+	margin-top: -15px;
+	width:150px;	
+}
+
+.navbar-default{
+	padding:1.5em 0;
+	background-color:#FFF;
+}
+
+/*修改导航列表中的文字*/
+.navbar-default .navbar-nav>li a {
+	top:10px;
+	padding:0.5em 2em;/*导航列表内容之间拉开距离*/
+	text-decoration:none;
+	font-weight:600;/*加粗*/
+	font-size:1.2em;
+	color:#919191;/*前景色：字体颜色*/
+}
+
+/*当鼠标停靠在导航项目上时，显示的样式*/
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+	background:#999999;	/*背景色：框体内颜色*/
+	color:white;		/*前景色：字体颜色*/
+	border-radius:3px;	/*圆角*/
+	-webkit-border-radius:3px;
+}
+
+/*子菜单的文字颜色*/
+.navbar-right>a{
+	color:#D96B66;
+}
+/* nav部分 结束 */
+
+.container .banner-nav{
+	margin-left: 20px;
+}
+
+.right-banner{
+	background-color: #D5CFCF;
+}
+
+
+.right-banner h3{
+	margin-left: 55px;
+	margin-top: 50px;
+}
+
+.right-banner #top{
+	margin-top: 45px;
+}
+
+.right-banner ul{
+	margin-left: 60px;
+	margin-top: 10px;
+}
+
+.right-banner ul li{
+	margin-top: 15px;
+}
+
+.right-banner .last{
+	margin-bottom: 50px;
+}
+
+/*footer部分*/
+.footer p {
+    color: #919191;
+    font-size: 1em;
+    line-height: 1.8em;
+    vertical-align: middle;
+    margin: 0.4em 0;
+}
+.footer p a{
+    color: #919191;
+    text-decoration:none;
+}
+.footer {
+    margin-top:30px;
+    padding: 1em 0;
+    background-color:#CCCCCC;
+}
+.footer-right ul {
+    padding-top: 10px;
+}
+.footer-right li {
+    display: inline-block;
+    margin: 0 1em;
+}
+.footer-left {
+    float: left;
+}
+.footer-right {
+    float: right;
+}
+/*设置字体图标的大小和颜色*/
+.glyphicon{
+    font-size: 1.2em;
+    color: #919191;
+}
+
+.container ul{
+	list-style: none;
+}
+
+.container ul li a{
+	color: #BEBEBE;
+	margin-right: 40px;
+}
+
+.container button{
+	background: #fff;
+	height: 50px;
+	width: 200px;
+}
+
+.container p{
+	padding-top: 5px;
+}
+
+.container h3{
+	color: #858585;
+}
+
+.top-content .fogot{
+	padding-left: 70px;
+}
+
+#summary-container1 .col-sm-3{
+	text-align: center;
+}
+
+#summary-container1 img{
+	width: 200px;
+	height: 150px;
+}
+	
+#summary-container1 h2 {
+	margin-right: 60px;
+}
+
+#summary-container1 a {
+	margin-right: 45px;
+}
+
+#summary-container .col-sm-3{
+	text-align: center;
+}
+
+#summary-container img{
+	width: 200px;
+	height: 150px;
+	padding-left: 60px;
+}
+	
+#summary-container h2 {
+	margin-right: 60px;
+}
+
+#summary-container a {
+	margin-right: 60px;
+}
+
+.right-banner ul li a{
+	color: #2D03FD;
+}
