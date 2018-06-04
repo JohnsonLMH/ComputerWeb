@@ -213,3 +213,15 @@ form.registration-form fieldset {
 	width: 60px;
 	color: #000000;
 }
+
+.input-group {
+    position: relative;
+}
+
+.btn-search {
+    float: left;
+    display: inline-block;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+}
