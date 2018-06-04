@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models
+namespace ComputerWeb.Models.EF
 {
     public partial class CustomerType
     {
@@ -11,8 +11,9 @@ namespace ComputerWeb.Models
             PriceList = new HashSet<PriceList>();
         }
 
+        public int ObjId { get; set; }
         public string Typename { get; set; }
-        public double MinSpending { get; set; }
+        public int MinSpending { get; set; }
         public int TheCustomerType { get; set; }
 
         public ICollection<Customer> Customer { get; set; }

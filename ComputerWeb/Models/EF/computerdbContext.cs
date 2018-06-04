@@ -2,15 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ComputerWeb.Models
+namespace ComputerWeb.Models.EF
 {
     public partial class computerdbContext : DbContext
     {
-        public computerdbContext()
-        {
-        }
-
-        public computerdbContext(DbContextOptions<computerdbContext> options) : base(options) { }
+        public computerdbContext(DbContextOptions<computerdbContext>options):base(options) { }
         public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<ComputerOrder> ComputerOrder { get; set; }
@@ -18,6 +14,7 @@ namespace ComputerWeb.Models
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerType> CustomerType { get; set; }
         public virtual DbSet<CustomerWords> CustomerWords { get; set; }
+        public virtual DbSet<Evaluate> Evaluate { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<PaymentType> PaymentType { get; set; }
         public virtual DbSet<PriceList> PriceList { get; set; }
@@ -28,24 +25,26 @@ namespace ComputerWeb.Models
         public virtual DbSet<SystemRole> SystemRole { get; set; }
         public virtual DbSet<SystemUser> SystemUser { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-NCKS0EU;Initial Catalog=computerdb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-NCKS0EU;Initial Catalog=computerdb;Integrated Security=True");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Area>(entity =>
             {
-                entity.HasKey(e => e.TheArea);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheArea)
-                    .HasColumnName("theArea")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheArea)
+                    .HasName("UQ__Area__610676EF11D36808")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.Aname)
                     .IsRequired()
@@ -53,12 +52,13 @@ namespace ComputerWeb.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.TheArea).HasColumnName("theArea");
 
                 entity.Property(e => e.TheCity).HasColumnName("theCity");
 
                 entity.HasOne(d => d.TheCityNavigation)
                     .WithMany(p => p.Area)
+                    .HasPrincipalKey(p => p.TheCity)
                     .HasForeignKey(d => d.TheCity)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("AreaFK");
@@ -66,11 +66,13 @@ namespace ComputerWeb.Models
 
             modelBuilder.Entity<City>(entity =>
             {
-                entity.HasKey(e => e.TheCity);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheCity)
-                    .HasColumnName("theCity")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheCity)
+                    .HasName("UQ__City__895EB7AEB98D51F4")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.Cname)
                     .IsRequired()
@@ -78,12 +80,13 @@ namespace ComputerWeb.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.TheCity).HasColumnName("theCity");
 
                 entity.Property(e => e.TheProvince).HasColumnName("theProvince");
 
                 entity.HasOne(d => d.TheProvinceNavigation)
                     .WithMany(p => p.City)
+                    .HasPrincipalKey(p => p.TheProvince)
                     .HasForeignKey(d => d.TheProvince)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CityFK");
@@ -93,11 +96,17 @@ namespace ComputerWeb.Models
             {
                 entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.ObjId)
-                    .HasColumnName("objId")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheOrder)
+                    .HasName("UQ__Computer__93391F8B4C83208D")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objId");
 
                 entity.Property(e => e.Amt).HasColumnName("amt");
+
+                entity.Property(e => e.EvaluateState)
+                    .IsRequired()
+                    .HasColumnType("char(12)");
 
                 entity.Property(e => e.OrderState)
                     .IsRequired()
@@ -108,31 +117,27 @@ namespace ComputerWeb.Models
                     .HasColumnName("orderTime")
                     .HasColumnType("datetime");
 
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
                 entity.Property(e => e.TheOrder).HasColumnName("theOrder");
 
                 entity.Property(e => e.ThePayment).HasColumnName("thePayment");
 
-                entity.Property(e => e.TheProductId).HasColumnName("theProductID");
-
                 entity.Property(e => e.UserId).HasColumnName("userID");
 
-                entity.HasOne(d => d.TheOrderNavigation)
+                entity.HasOne(d => d.Product)
                     .WithMany(p => p.ComputerOrder)
-                    .HasForeignKey(d => d.TheOrder)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("ComputerOrderFK3");
+                    .HasConstraintName("ComputerOrderFK1");
 
                 entity.HasOne(d => d.ThePaymentNavigation)
                     .WithMany(p => p.ComputerOrder)
+                    .HasPrincipalKey(p => p.ThePayment)
                     .HasForeignKey(d => d.ThePayment)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ComputerOrderFK2");
-
-                entity.HasOne(d => d.TheProduct)
-                    .WithMany(p => p.ComputerOrder)
-                    .HasForeignKey(d => d.TheProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("ComputerOrderFK1");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.ComputerOrder)
@@ -145,9 +150,7 @@ namespace ComputerWeb.Models
             {
                 entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.ObjId)
-                    .HasColumnName("objId")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ObjId).HasColumnName("objId");
 
                 entity.Property(e => e.Cname)
                     .IsRequired()
@@ -163,7 +166,7 @@ namespace ComputerWeb.Models
                 entity.Property(e => e.Fulladdress)
                     .IsRequired()
                     .HasColumnName("fulladdress")
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MobilePhone)
@@ -179,6 +182,7 @@ namespace ComputerWeb.Models
 
                 entity.HasOne(d => d.TheAreaNavigation)
                     .WithMany(p => p.Consignee)
+                    .HasPrincipalKey(p => p.TheArea)
                     .HasForeignKey(d => d.TheArea)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ConsigneeFK1");
@@ -198,42 +202,38 @@ namespace ComputerWeb.Models
                     .HasColumnName("userID")
                     .ValueGeneratedNever();
 
+                entity.Property(e => e.Cname)
+                    .IsRequired()
+                    .HasColumnName("cname")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("email")
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.HomePhone)
-                    .IsRequired()
-                    .HasColumnName("homePhone")
-                    .HasColumnType("char(20)");
 
                 entity.Property(e => e.MobilePhone)
                     .IsRequired()
                     .HasColumnName("mobilePhone")
                     .HasColumnType("char(20)");
 
-                entity.Property(e => e.OfficePhone)
-                    .IsRequired()
-                    .HasColumnName("officePhone")
-                    .HasColumnType("char(20)");
+                entity.Property(e => e.ObjId)
+                    .HasColumnName("objId")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Pwd)
                     .IsRequired()
                     .HasColumnName("pwd")
-                    .HasMaxLength(8)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.QqNumber)
-                    .IsRequired()
-                    .HasColumnName("qqNumber")
-                    .HasColumnType("char(10)");
 
                 entity.Property(e => e.TheCustomerType).HasColumnName("theCustomerType");
 
                 entity.HasOne(d => d.TheCustomerTypeNavigation)
                     .WithMany(p => p.Customer)
+                    .HasPrincipalKey(p => p.TheCustomerType)
                     .HasForeignKey(d => d.TheCustomerType)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CustomerFK1");
@@ -241,13 +241,17 @@ namespace ComputerWeb.Models
 
             modelBuilder.Entity<CustomerType>(entity =>
             {
-                entity.HasKey(e => e.TheCustomerType);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheCustomerType)
-                    .HasColumnName("theCustomerType")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheCustomerType)
+                    .HasName("UQ__Customer__639120DADDF9F004")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.MinSpending).HasColumnName("minSpending");
+
+                entity.Property(e => e.TheCustomerType).HasColumnName("theCustomerType");
 
                 entity.Property(e => e.Typename)
                     .IsRequired()
@@ -257,31 +261,57 @@ namespace ComputerWeb.Models
 
             modelBuilder.Entity<CustomerWords>(entity =>
             {
-                entity.HasKey(e => e.TheOrder);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheOrder)
-                    .HasColumnName("theOrder")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ObjId).HasColumnName("objID");
+
+                entity.Property(e => e.TheOrder).HasColumnName("theOrder");
 
                 entity.Property(e => e.Words)
                     .HasColumnName("words")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.TheOrderNavigation)
+                    .WithMany(p => p.CustomerWords)
+                    .HasPrincipalKey(p => p.TheOrder)
+                    .HasForeignKey(d => d.TheOrder)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("CustomerFK");
+            });
+
+            modelBuilder.Entity<Evaluate>(entity =>
+            {
+                entity.HasKey(e => e.ObjId);
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
+
+                entity.Property(e => e.Content)
+                    .IsRequired()
+                    .HasColumnName("content")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.TheOrder).HasColumnName("theOrder");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Evaluate)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("EvaluateFK");
             });
 
             modelBuilder.Entity<Payment>(entity =>
             {
-                entity.HasKey(e => e.ThePayment);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.ThePayment)
-                    .HasColumnName("thePayment")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.ThePayment)
+                    .HasName("UQ__Payment__F1CCBDF6DCE83319")
+                    .IsUnique();
 
-                entity.Property(e => e.AccountName)
-                    .IsRequired()
-                    .HasColumnName("accountName")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.AccountNo)
                     .IsRequired()
@@ -291,32 +321,31 @@ namespace ComputerWeb.Models
 
                 entity.Property(e => e.Amount).HasColumnName("amount");
 
+                entity.Property(e => e.ThePayment).HasColumnName("thePayment");
+
                 entity.Property(e => e.TransNo).HasColumnName("transNo");
 
                 entity.Property(e => e.TransTime)
                     .HasColumnName("transTime")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.TypeName)
-                    .IsRequired()
-                    .HasColumnName("typeName")
-                    .HasColumnType("char(20)");
-
-                entity.HasOne(d => d.TypeNameNavigation)
-                    .WithMany(p => p.Payment)
-                    .HasForeignKey(d => d.TypeName)
+                entity.HasOne(d => d.ThePaymentNavigation)
+                    .WithOne(p => p.Payment)
+                    .HasPrincipalKey<PaymentType>(p => p.ThePayment)
+                    .HasForeignKey<Payment>(d => d.ThePayment)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("PaymentFK");
             });
 
             modelBuilder.Entity<PaymentType>(entity =>
             {
-                entity.HasKey(e => e.TypeName);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TypeName)
-                    .HasColumnName("typeName")
-                    .HasColumnType("char(20)")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.ThePayment)
+                    .HasName("UQ__PaymentT__F1CCBDF63F77E1B8")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.BigImg)
                     .HasColumnName("bigImg")
@@ -337,15 +366,22 @@ namespace ComputerWeb.Models
                     .HasColumnName("smallImg")
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ThePayment).HasColumnName("thePayment");
+
+                entity.Property(e => e.TypeName)
+                    .IsRequired()
+                    .HasColumnName("typeName")
+                    .HasColumnType("char(20)");
             });
 
             modelBuilder.Entity<PriceList>(entity =>
             {
-                entity.HasKey(e => e.TheProductId);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheProductId)
-                    .HasColumnName("theProductID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ObjId).HasColumnName("objID");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
 
                 entity.Property(e => e.RealPrice)
                     .HasColumnName("realPrice")
@@ -353,26 +389,30 @@ namespace ComputerWeb.Models
 
                 entity.Property(e => e.TheCustomerType).HasColumnName("theCustomerType");
 
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.PriceList)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("PriceListFK");
+
                 entity.HasOne(d => d.TheCustomerTypeNavigation)
                     .WithMany(p => p.PriceList)
+                    .HasPrincipalKey(p => p.TheCustomerType)
                     .HasForeignKey(d => d.TheCustomerType)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("PriceListFK1");
-
-                entity.HasOne(d => d.TheProduct)
-                    .WithOne(p => p.PriceList)
-                    .HasForeignKey<PriceList>(d => d.TheProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("PriceListFK");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.HasKey(e => e.TheProductId);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheProductId)
-                    .HasColumnName("theProductID")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.ProductId)
+                    .HasName("UQ__Product__2D10D16B296D2177")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.BigImg)
                     .HasColumnName("bigImg")
@@ -389,11 +429,7 @@ namespace ComputerWeb.Models
                     .HasColumnName("price")
                     .HasColumnType("decimal(7, 2)");
 
-                entity.Property(e => e.ProductId)
-                    .IsRequired()
-                    .HasColumnName("productId")
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.ProductId).HasColumnName("productId");
 
                 entity.Property(e => e.ProductName)
                     .IsRequired()
@@ -406,11 +442,6 @@ namespace ComputerWeb.Models
                     .HasColumnName("productState")
                     .HasColumnType("char(20)");
 
-                entity.Property(e => e.Productpositioning)
-                    .HasColumnName("productpositioning")
-                    .HasMaxLength(130)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Ram)
                     .IsRequired()
                     .HasColumnName("ram")
@@ -422,11 +453,6 @@ namespace ComputerWeb.Models
                     .HasColumnName("rom")
                     .HasMaxLength(120)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Screensize)
-                    .IsRequired()
-                    .HasColumnName("screensize")
-                    .HasColumnType("char(50)");
 
                 entity.Property(e => e.SmallImg)
                     .HasColumnName("smallImg")
@@ -442,22 +468,22 @@ namespace ComputerWeb.Models
             {
                 entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.ObjId)
-                    .HasColumnName("objId")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ObjId).HasColumnName("objId");
 
-                entity.Property(e => e.TheProductId).HasColumnName("theProductID");
+                entity.Property(e => e.ProductId).HasColumnName("productId");
 
                 entity.Property(e => e.TheProductType).HasColumnName("theProductType");
 
-                entity.HasOne(d => d.TheProduct)
+                entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductClass)
-                    .HasForeignKey(d => d.TheProductId)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ProductClassFK");
 
                 entity.HasOne(d => d.TheProductTypeNavigation)
                     .WithMany(p => p.ProductClass)
+                    .HasPrincipalKey(p => p.TheProductType)
                     .HasForeignKey(d => d.TheProductType)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ProductClassFK1");
@@ -465,17 +491,21 @@ namespace ComputerWeb.Models
 
             modelBuilder.Entity<ProductType>(entity =>
             {
-                entity.HasKey(e => e.TheProductType);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheProductType)
-                    .HasColumnName("theProductType")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheProductType)
+                    .HasName("UQ__ProductT__916BBD28EF6074B1")
+                    .IsUnique();
+
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.ClassifyType)
                     .IsRequired()
                     .HasColumnName("classifyType")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.TheProductType).HasColumnName("theProductType");
 
                 entity.Property(e => e.TypeName)
                     .IsRequired()
@@ -486,11 +516,11 @@ namespace ComputerWeb.Models
 
             modelBuilder.Entity<Province>(entity =>
             {
-                entity.HasKey(e => e.TheProvince);
+                entity.HasKey(e => e.ObjId);
 
-                entity.Property(e => e.TheProvince)
-                    .HasColumnName("theProvince")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheProvince)
+                    .HasName("UQ__Province__F488AD4868618D25")
+                    .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
 
@@ -499,33 +529,37 @@ namespace ComputerWeb.Models
                     .HasColumnName("pname")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.TheProvince).HasColumnName("theProvince");
             });
 
             modelBuilder.Entity<SystemRole>(entity =>
             {
-                entity.HasKey(e => e.TheRole);
+                entity.HasKey(e => e.Objid);
 
                 entity.ToTable("systemRole");
 
-                entity.Property(e => e.TheRole)
-                    .HasColumnName("theRole")
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.TheRole)
+                    .HasName("UQ__systemRo__AA7A03D3D04F6AE6")
+                    .IsUnique();
+
+                entity.Property(e => e.Objid).HasColumnName("objid");
 
                 entity.Property(e => e.Sname)
                     .IsRequired()
                     .HasColumnName("sname")
                     .HasColumnType("char(20)");
+
+                entity.Property(e => e.TheRole).HasColumnName("theRole");
             });
 
             modelBuilder.Entity<SystemUser>(entity =>
             {
-                entity.HasKey(e => e.UserId);
+                entity.HasKey(e => e.ObjId);
 
                 entity.ToTable("systemUser");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("userID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -546,11 +580,12 @@ namespace ComputerWeb.Models
 
                 entity.Property(e => e.TheRole).HasColumnName("theRole");
 
+                entity.Property(e => e.UserId).HasColumnName("userID");
+
                 entity.Property(e => e.UserState)
                     .IsRequired()
                     .HasColumnName("userState")
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .HasColumnType("char(20)");
 
                 entity.Property(e => e.Username)
                     .IsRequired()
@@ -560,6 +595,7 @@ namespace ComputerWeb.Models
 
                 entity.HasOne(d => d.TheRoleNavigation)
                     .WithMany(p => p.SystemUser)
+                    .HasPrincipalKey(p => p.TheRole)
                     .HasForeignKey(d => d.TheRole)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("systemUserFK");

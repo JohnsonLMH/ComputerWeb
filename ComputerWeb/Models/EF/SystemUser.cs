@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models
+namespace ComputerWeb.Models.EF
 {
     public partial class SystemUser
     {
+        public int ObjId { get; set; }
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Pwd { get; set; }

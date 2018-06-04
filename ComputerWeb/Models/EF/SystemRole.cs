@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models
+namespace ComputerWeb.Models.EF
 {
     public partial class SystemRole
     {
@@ -10,6 +10,7 @@ namespace ComputerWeb.Models
             SystemUser = new HashSet<SystemUser>();
         }
 
+        public int Objid { get; set; }
         public string Sname { get; set; }
         public int TheRole { get; set; }
 

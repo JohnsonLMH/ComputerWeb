@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models
+namespace ComputerWeb.Models.EF
 {
     public partial class Area
     {
@@ -10,7 +10,7 @@ namespace ComputerWeb.Models
             Consignee = new HashSet<Consignee>();
         }
 
-        public int Id { get; set; }
+        public int ObjId { get; set; }
         public int TheArea { get; set; }
         public string Aname { get; set; }
         public int TheCity { get; set; }

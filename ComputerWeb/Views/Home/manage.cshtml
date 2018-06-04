@@ -1,303 +1,309 @@
-﻿<!doctype html>
+﻿@{Layout = null;}
+@using ComputerWeb.Models.EF;
+@model List<Product>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
-<link rel="stylesheet" href="~/css/managestyle.css" type="text/css">
-<title>News</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    <link rel="stylesheet" href="~/css/managestyle.css" type="text/css">
+    <title>News</title>
 </head>
 
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar-collapse"
-						aria-expanded="false">
-						<span class="sr-only">汉堡按钮</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">
-					<img src="~/images/logo.jpg" alt="###"/>
-				</a>
-				<p>MANAGE CENTER</p>
-			</div>
-			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<div>
-				  <ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#">
-								<span class="glyphicon glyphicon-user"></span>
-								用户名
-							</a>
-						</li>
-						<li>
-							<a href="SignIn.html">
-								<span class="glyphicon glyphicon-log-in"></span>
-								退出
-							</a>
-						</li>
-				  </ul>
-				</div>
-			</div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar-collapse"
+                        aria-expanded="false">
+                    <span class="sr-only">汉堡按钮</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/logo.jpg" alt="###" />
+                </a>
+                <p>MANAGE CENTER</p>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user"></span>
+                                用户名
+                            </a>
+                        </li>
+                        <li>
+                            <a href="SignIn.html">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
 
-		</div>
-	</nav>
-	
-	<div class="tab-summary">
-		<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-				<ul class="nav nav-stacked nav-pills" role="tablist">
-					<li class="active"><a href="#manage1" role="tab" data-toggle="tab">商品管理</a></li>
-					<li><a href="#manage2" role="tab" data-toggle="tab">用户管理</a></li>
-					<li><a href="#manage3" role="tab" data-toggle="tab">订单管理</a></li>
-					<li><a href="#manage4" role="tab" data-toggle="tab">员工信息</a></li>
-					<li><a href="#manage5" role="tab" data-toggle="tab">个人信息</a></li>
-					<li><a href="#" role="tab" data-toggle="tab">退出</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-9">
-				<div class="tab-content">
-					<div class="tab-pane active" id="manage1" role="tabpanel">
-						<div class="input-group">  
-       						<input type="text" class="form-control" placeholder="请输入商品ID">  
-            				<button class="btn btn-info btn-search">查找</button> 
- 						</div> 
-						<div class="panel-heading">
-                             商品列表
-                        </div>
-						 <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>序号</th>
-                                            <th>产品ID</th>
-                                            <th>产品名称</th>
-                                            <th>上架时间</th>
-                                            <th>状态</th>
-											<th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeX">
-                                            <td>Misc</td>
-                                            <td>Lynx</td>
-                                            <td>Text only</td>
-                                            <td class="center">-</td>
-                                            <td class="center">X</td>
-											<td>
-												<button type="submit" class="btn">修改</button>
-												<button type="submit" class="btn">删除</button>
-											</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        </div>
+    </nav>
+
+    <div class="tab-summary">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <ul class="nav nav-stacked nav-pills" role="tablist">
+                        <li class="active"><a href="#manage1" role="tab" data-toggle="tab">商品管理</a></li>
+                        <li><a href="#manage2" role="tab" data-toggle="tab">用户管理</a></li>
+                        <li><a href="#manage3" role="tab" data-toggle="tab">订单管理</a></li>
+                        <li><a href="#manage4" role="tab" data-toggle="tab">员工信息</a></li>
+                        <li><a href="#manage5" role="tab" data-toggle="tab">个人信息</a></li>
+                        <li><a href="#" role="tab" data-toggle="tab">退出</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="manage1" role="tabpanel">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <button class="btn btn-info btn-search">查找</button>
                             </div>
-                            
-                        </div>
-					</div>
-					<div class="tab-pane" id="manage2" role="tabpanel">
-						<div class="input-group">  
-       						<input type="text" class="form-control" placeholder="请输入商品ID">  
-            				<button class="btn btn-info btn-search">查找</button> 
- 						</div> 
-						<div class="panel-heading">
-                             用户列表
-                        </div>
-						 <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>用户ID</th>
-                                            <th>用户名</th>
-                                            <th>用户密码</th>
-                                            <th>联系方式</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeX">
-                                            <td>Misc</td>
-                                            <td>Lynx</td>
-                                            <td>Text only</td>
-                                            <td class="center">-</td>
-											<td>
-												<button type="submit" class="btn">删除</button>
-											</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="panel-heading">
+                                商品列表
                             </div>
-                            
-                        </div>
-					</div>
-					<div class="tab-pane" id="manage3" role="tabpanel">
-						<div class="input-group">  
-       						<input type="text" class="form-control" placeholder="请输入商品ID">  
-            				<button class="btn btn-info btn-search">查找</button> 
- 						</div> 
-						<div class="panel-heading">
-                             订单列表
-                        </div>
-						 <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>订单号</th>
-                                            <th>产品ID</th>
-                                            <th>下单时间</th>
-											<th>收货人</th>
-											<th>收货人联系方式</th>
-                                            <th>订单状态</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeC">
-                                            <td>Misc</td>
-                                            <td>IE Mobile</td>
-                                            <td>Windows Mobile 6</td>
-                                            <td class="center">-</td>
-                                            <td class="center">C</td>
-											<td>
-												<button class="btn btn-default">Action</button> 
-												<button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-												<ul class="dropdown-menu">
-													<li>
-														 <a href="#">待付款</a>
-													</li>
-													<li class="disabled">
-														 <a href="#">已付款</a>
-													</li>
-													<li class="disabled">
-														 <a href="#">配送中</a>
-													</li>
-													<li class="disabled">
-														 <a href="#">已配送</a>
-													</li>
-												</ul>
-											</td>
-											<td>
-												<button type="submit" class="btn">删除</button>	
-											</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>产品ID</th>
+                                                <th>产品名称</th>
+                                                <th>上架时间</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr class="gradeX">
+                                                    <td>@item.ObjId</td>
+                                                    <td>@item.ProductId</td>
+                                                    <td>@item.ProductName</td>
+                                                    <td class="center">@item.Timetommarket</td>
+                                                    <td class="center">@item.ProductState</td>
+                                                    <td>
+                                                        <button type="submit" class="btn">修改</button>
+                                                        <button type="submit" class="btn">删除</button>
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-                            
                         </div>
-					</div>
-					<div class="tab-pane" id="manage4" role="tabpanel">
-						<div class="input-group">  
-       						<input type="text" class="form-control" placeholder="请输入商品ID">  
-            				<button class="btn btn-info btn-search">查找</button> 
- 						</div> 
-						<div class="panel-heading">
-                             员工列表
-                        </div>
-						 <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>员工ID</th>
-                                            <th>员工姓名</th>
-											<th>联系方式</th>
-                                            <th>员工状态</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeC">
-                                            <td>Misc</td>
-                                            <td>IE Mobile</td>
-                                            <td>Windows Mobile 6</td>
-											<td>Windows Mobile 6</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="tab-pane" id="manage2" role="tabpanel">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <button class="btn btn-info btn-search">查找</button>
                             </div>
-                            
-                        </div>
-					</div>
-					<div class="tab-pane" id="manage5" role="tabpanel">
-						<div class="input-group">  
-       						<input type="text" class="form-control" placeholder="请输入商品ID">  
-            				<button class="btn btn-info btn-search">查找</button> 
- 						</div> 
-						<div class="panel-heading">
-                             订单列表
-                        </div>
-						 <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>用户ID</th>
-                                            <th>姓名</th>
-                                            <th>用户密码</th>
-                                            <th>联系方式</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeU">
-                                            <td>Other browsers</td>
-                                            <td>All others</td>
-                                            <td>-</td>
-                                            <td class="center">-</td>
-                                            <td class="center">
-												<button type="submit" class="btn">删除</button>
-											</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="panel-heading">
+                                用户列表
                             </div>
-                            
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>用户ID</th>
+                                                <th>用户名</th>
+                                                <th>联系方式</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var item in Model) {
+                                                <tr class="gradeX">
+                                                    <td></td>
+                                                    <td>Lynx</td>
+                                                    <td class="center">-</td>
+                                                    <td>
+                                                        <button type="submit" class="btn">删除</button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
                         </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
+                        <div class="tab-pane" id="manage3" role="tabpanel">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <button class="btn btn-info btn-search">查找</button>
+                            </div>
+                            <div class="panel-heading">
+                                订单列表
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>订单号</th>
+                                                <th>产品ID</th>
+                                                <th>下单时间</th>
+                                                <th>收货人</th>
+                                                <th>收货人联系方式</th>
+                                                <th>订单状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="gradeC">
+                                                <td>Misc</td>
+                                                <td>IE Mobile</td>
+                                                <td>Windows Mobile 6</td>
+                                                <td class="center">-</td>
+                                                <td class="center">C</td>
+                                                <td>
+                                                    <button class="btn btn-default">Action</button>
+                                                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="#">待付款</a>
+                                                        </li>
+                                                        <li class="disabled">
+                                                            <a href="#">已付款</a>
+                                                        </li>
+                                                        <li class="disabled">
+                                                            <a href="#">配送中</a>
+                                                        </li>
+                                                        <li class="disabled">
+                                                            <a href="#">已配送</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" class="btn">删除</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-		
-	
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="manage4" role="tabpanel">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <button class="btn btn-info btn-search">查找</button>
+                            </div>
+                            <div class="panel-heading">
+                                员工列表
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>员工ID</th>
+                                                <th>员工姓名</th>
+                                                <th>联系方式</th>
+                                                <th>员工状态</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="gradeC">
+                                                <td>Misc</td>
+                                                <td>IE Mobile</td>
+                                                <td>Windows Mobile 6</td>
+                                                <td>Windows Mobile 6</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-	<!-- footer 开始-->
-	<footer class="footer navbar-fixed-bottom">
-		<div class="container">
-			<div class="footer-left">
-				<p>Copyrights © 2018 Bootstrap ZHBIT响应式网站  | 版权所有 <a href="#"></a></p>
-			</div>
-			<div class="footer-right">
-				<ul>
-					<li><a href="#"><i class="glyphicon glyphicon-phone-alt">&nbsp;联系我们</i></a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-map-marker">&nbsp;公司地址</i></a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-question-sign">&nbsp;服务声明</i></a></li>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="manage5" role="tabpanel">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <button class="btn btn-info btn-search">查找</button>
+                            </div>
+                            <div class="panel-heading">
+                                订单列表
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>用户ID</th>
+                                                <th>姓名</th>
+                                                <th>用户密码</th>
+                                                <th>联系方式</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="gradeU">
+                                                <td>Other browsers</td>
+                                                <td>All others</td>
+                                                <td>-</td>
+                                                <td class="center">-</td>
+                                                <td class="center">
+                                                    <button type="submit" class="btn">删除</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-				</ul>
-			</div>
-		</div>
-	</footer>
-	<!-- footer 结束-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) --> 
-<script src="~/lib/jquery/dist/jquery-1.11.0.min.js"></script> 
-<!-- 包括所有已编译的插件 --> 
-<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+    <!-- footer 开始-->
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container">
+            <div class="footer-left">
+                <p>Copyrights © 2018 Bootstrap ZHBIT响应式网站  | 版权所有 <a href="#"></a></p>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li><a href="#"><i class="glyphicon glyphicon-phone-alt">&nbsp;联系我们</i></a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-map-marker">&nbsp;公司地址</i></a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-question-sign">&nbsp;服务声明</i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- footer 结束-->
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="~/lib/jquery/dist/jquery-1.11.0.min.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

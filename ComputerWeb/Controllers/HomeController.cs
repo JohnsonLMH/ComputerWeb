@@ -5,11 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ComputerWeb.Models;
+using ComputerWeb.Models.EF;
 
 namespace ComputerWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly computerdbContext _computerdbContext;
+        public HomeController(computerdbContext computerdbContext) {
+            _computerdbContext = computerdbContext;
+        }
         public IActionResult News()
         {
             return View();
@@ -52,7 +57,10 @@ namespace ComputerWeb.Controllers
         }
         public IActionResult manage()
         {
-            return View();
+            var pro = _computerdbContext.Product.Where(p => p.ObjId >= 0);
+            List<Product> computerlist = new List<Product>();
+            computerlist = pro.ToList();
+            return View(computerlist);
         }
 
         public IActionResult Error()
