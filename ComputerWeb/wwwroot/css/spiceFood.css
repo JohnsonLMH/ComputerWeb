@@ -5,95 +5,91 @@ body {
     background: #fff;
 }
 
-nav
-{
-	margin-top:10px;	
+nav {
+    margin-top: 10px;
 }
 
 /*设置网站LOGO的大小及位置*/
-.navbar-brand{
-	padding:0 0;	
-}
-.navbar-brand>img{
-	height:80px;
-	margin-right:5px;
-	margin-top: -15px;
-	width:150px;	
+.navbar-brand {
+    padding: 0 0;
 }
 
-.navbar-default{
-	padding:1.5em 0;
-	background-color:#FFF;
+    .navbar-brand > img {
+        height: 80px;
+        margin-right: 5px;
+        margin-top: -15px;
+        width: 150px;
+    }
+
+.navbar-default {
+    padding: 1.5em 0;
+    background-color: #FFF;
 }
 
-/*修改导航列表中的文字*/
-.navbar-default .navbar-nav>li a {
-	top:10px;
-	padding:0.5em 2em;/*导航列表内容之间拉开距离*/
-	text-decoration:none;
-	font-weight:600;/*加粗*/
-	font-size:1.2em;
-	color:#919191;/*前景色：字体颜色*/
-}
+    /*修改导航列表中的文字*/
+    .navbar-default .navbar-nav > li a {
+        top: 10px;
+        padding: 0.5em 2em; /*导航列表内容之间拉开距离*/
+        text-decoration: none;
+        font-weight: 600; /*加粗*/
+        font-size: 1.2em;
+        color: #919191; /*前景色：字体颜色*/
+    }
 
-/*当鼠标停靠在导航项目上时，显示的样式*/
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-nav>li>a:focus {
-	background:#999999;	/*背景色：框体内颜色*/
-	color:white;		/*前景色：字体颜色*/
-	border-radius:3px;	/*圆角*/
-	-webkit-border-radius:3px;
-}
+    /*当鼠标停靠在导航项目上时，显示的样式*/
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        background: #999999; /*背景色：框体内颜色*/
+        color: white; /*前景色：字体颜色*/
+        border-radius: 3px; /*圆角*/
+        -webkit-border-radius: 3px;
+    }
 
 /*子菜单的文字颜色*/
-.navbar-right>a{
-	color:#D96B66;
+.navbar-right > a {
+    color: #D96B66;
 }
 
 /*Bootstrap的媒体查询功能*/
 /*当屏幕宽度小于970px时，菜单字体变小为1.1倍。*/
-@media(max-width:970px){
-	.navbar-default .navbar-nav>li a{
-		font-size:1.1em;
-	}
+@media(max-width:970px) {
+    .navbar-default .navbar-nav > li a {
+        font-size: 1.1em;
+    }
 }
 
 /*滚动*/
-.carousel{
-	height:500px;
-	background-color:#FFF;
-	margin-bottom:30px;
-	}
-
-.carousel .item{
-	height:500px;
-	background-color:#FFF;
-	}
-	
-.carousel img{
-	width:100%;
-	background-color:#FFF;
-	}
-
-.carousel-caption p{
-	margin-bottom:20px;
-	font-size:16px;
-	line-height:28px;
-	}
-
-
-
-
-#summary-container .col-sm-4{
-	text-align:center;
-	
-	
+.carousel {
+    height: 500px;
+    background-color: #FFF;
+    margin-bottom: 30px;
 }
 
-#summary-container img{
-	width:200px;
+    .carousel .item {
+        height: 500px;
+        background-color: #FFF;
+    }
 
-	
+    .carousel img {
+        width: 100%;
+        background-color: #FFF;
+    }
+
+.carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+
+
+
+#summary-container .col-sm-4 {
+    text-align: center;
+}
+
+#summary-container img {
+    width: 200px;
 }
 
 
@@ -107,123 +103,354 @@ nav
     vertical-align: middle;
     margin: 0.4em 0;
 }
-.footer p a{
-    color: #919191;
-    text-decoration:none;
-}
+
+    .footer p a {
+        color: #919191;
+        text-decoration: none;
+    }
+
 .footer {
-    margin-top:30px;
+    margin-top: 30px;
     padding: 1em 0;
-    background-color:#CCCCCC;
+    background-color: #CCCCCC;
 }
+
 .footer-right ul {
     padding: 0;
 }
+
 .footer-right li {
     display: inline-block;
     margin: 0 1em;
 }
+
 .footer-left {
     float: left;
 }
+
 .footer-right {
     float: right;
 }
 /*设置字体图标的大小和颜色*/
-.glyphicon{
+.glyphicon {
     font-size: 1.2em;
     color: #919191;
 }
 
 
 .sub {
-	text-align: right;
+    text-align: right;
 }
+
 .add-to-cart {
-	margin-left: 1.7em;
+    margin-left: 1.7em;
 }
+
 .sub p {
-	text-align: left;
-	color: #000000;
-	font-size: 1.2em;
-	font-weight: 400;
-	padding: 0.7em 0 0 0em;
+    text-align: left;
+    color: #000000;
+    font-size: 1.2em;
+    font-weight: 400;
+    padding: 0.7em 0 0 0em;
 }
+
 .sub span {
-	color: #ff0000;
-	font-size: 2.2em;
-	font-weight: 500;
-	text-align: left;
-	display: block;
+    color: #ff0000;
+    font-size: 2.2em;
+    font-weight: 500;
+    text-align: left;
+    display: block;
 }
 
-.preview{
-	float: left;
-	width: 27%;
-	margin-right: 2%;
-	position:relative;
-}
-.preview img {
-	width: 100%;
+.preview {
+    float: left;
+    width: 27%;
+    margin-right: 2%;
+    position: relative;
 }
 
-.preview:hover i.bag{
-	width: 35px;
-	height: 35px;
-	background: url("../images/img-sprite.png") no-repeat -6px -25px;
-	display: inline-block;
-	cursor: pointer;
-	position: absolute;
-	top: 39%;
-	left: 42%;
-}
+    .preview img {
+        width: 100%;
+    }
+
+    .preview:hover i.bag {
+        width: 35px;
+        height: 35px;
+        background: url("../images/img-sprite.png") no-repeat -6px -25px;
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+        top: 39%;
+        left: 42%;
+    }
 
 button.cart-button span {
-	color: #fff;
-	background: #C800FF;
-	margin: 0;
-	font-size: 17px;
-	font-weight: 300;
-	padding: 0.6em 2em 0.6em 2em;
+    color: #fff;
+    background: #C800FF;
+    margin: 0;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 0.6em 2em 0.6em 2em;
 }
 
-button.cart-button span:hover {
-	background: #ffd400;
-    transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
+    button.cart-button span:hover {
+        background: #ffd400;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+    }
+
+.select {
+    float: left;
+    background: #484c4b;
+    padding: 3.36em 0;
+    width: 15%;
 }
 
-.select{
-	float: left;
-	background: #484c4b;
-	padding: 3.36em 0;
-	width: 15%;
+    .select h2 {
+        font-weight: 700;
+        width: 63%;
+        margin: 0 auto;
+        font-size: 2em;
+        text-align: left;
+        line-height: 10em;
+        color: #fff;
+        font-family: 'Dancing Script', cursive;
+        text-transform: uppercase;
+    }
+
+.nav-tabs {
+    margin: 10px 10px 10px 10px
 }
-.select h2 {
-	font-weight: 700;
-	width: 63%;
-	margin: 0 auto;
-	font-size: 2em;
-	text-align: left;
-	line-height: 10em;
-	color: #fff;
-	font-family: 'Dancing Script', cursive;
-	text-transform: uppercase;
+
+.form-search {
+    margin: 10px 10px 10px 10px
 }
-.nav-tabs{margin:10px 10px 10px 10px}
-.form-search{margin:10px 10px 10px 10px}
 
-#box1{margin:5px 5px 5px 5px}
-.carousel-control{
-	float:right;
-	margin:5px 5px 5px 5px}
-	
-blockquote{
-	color:#000000;
-	margin:10px 10px 10px 10px}
-	
+#box1 {
+    margin: 5px 5px 5px 5px
+}
+
+.carousel-control {
+    float: right;
+    margin: 5px 5px 5px 5px
+}
+
+blockquote {
+    color: #000000;
+    margin: 10px 10px 10px 10px
+}
 
 
+
+
+
+
+
+.tab-pane.active li {
+    float: left;
+    list-style: none;
+    line-height: 30px;
+    line-height: 30px;
+}
+
+.info {
+    float: right;
+}
+
+.remen li {
+    display: block;
+    list-style-type: none;
+    margin: 40px;
+}
+
+.xinpin {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.under li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    list-style-type: none;
+    margin: 20px;
+}
+
+.product-travellink li {
+    width: 170px;
+    margin-left: 10px;
+    float: left;
+    _display: inline;
+    padding-left: 9px;
+    background-position: -105px -310px;
+    background-position-x: -105px;
+    background-position-y: -310px;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 14px;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.nb-topswitch {
+    border-bottom: 1px solid #1085e9;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(16, 133, 233);
+    background-color: #fafafa;
+    width: 1196px;
+}
+
+.tabbable {
+    border: 2px solid #e6e6e6;
+    border-top-color: rgb(230, 230, 230);
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-right-color: rgb(230, 230, 230);
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-bottom-color: rgb(230, 230, 230);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-color: rgb(230, 230, 230);
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    margin: 9px auto 10px;
+    margin-top: 9px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1;
+    font-family: "Microsoft YaHei";
+}
+
+.global-header .search-box {
+    float: right;
+    margin-top: 1px;
+    height: 60px;
+}
+
+.global-header .skey {
+    float: left;
+    padding: 4px;
+    height: 34px;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-right: 0 none;
+    font: 14px/20px arial;
+    color: #999;
+}
+
+.global-header .sbtn {
+    width: 70px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #1085e9;
+}
+
+.global-header .sbtn {
+    outline: none;
+    outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+}
+
+.advanced-search {
+    float: right;
+}
+
+
+.title_ser {
+    background: #edf5fe;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(237, 245, 254);
+    height: 28px;
+    line-height: 28px;
+    margin-bottom: 1px;
+}
+
+element.style {
+    display: none;
+}
+
+.s_condition dt {
+    font-weight: bold;
+    padding-left: 20px;
+    width: 100px;
+    line-height: 19px;
+    padding: 2px 0 0 20px;
+    background: url(http://icon.zol-img.com.cn/products/images/search_icon.png) no-repeat 8px -326px;
+    color: #333;
+}
+
+.s_condition dt, .s_condition dd {
+    float: left;
+}
+
+
+dt {
+    display: block;
+}
+
+.s_condition dd {
+    line-height: 22px;
+    padding: 2px 0 35px;
+    margin-bottom: -35px;
+    background: #fff;
+}
+
+
+.s_condition {
+    margin-right: 6px;
+    overflow: hidden;
+    _zoom: 1;
+    border-top: 1px dashed #dde7f0;
+    background: #edf5fe;
+}
+
+
+    .s_condition dd label {
+        float: left;
+        display: inline;
+        min-width: 120px;
+        white-space: nowrap;
+        margin-left: 9px;
+        vertical-align: middle;
+    }
+
+label {
+    cursor: default;
+}
+
+.serform {
+    padding: 0 17px;
+}
+
+.l {
+    float: left;
+}
+
+.span12 {
+    padding-left: 100px;
+}

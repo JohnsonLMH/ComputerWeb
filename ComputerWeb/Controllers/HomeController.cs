@@ -46,6 +46,10 @@ namespace ComputerWeb.Controllers
         {
             return View();
         }
+        public IActionResult serch()
+        {
+            return View();
+        }
 
         public IActionResult personal()
         {
