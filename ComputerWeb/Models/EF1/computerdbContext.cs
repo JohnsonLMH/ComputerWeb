@@ -2,11 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ComputerWeb.Models.EF
+namespace ComputerWeb.Models.EF1
 {
     public partial class computerdbContext : DbContext
     {
-        public computerdbContext(DbContextOptions<computerdbContext>options):base(options) { }
+        public computerdbContext(DbContextOptions<computerdbContext> options)
+            : base(options)
+        {
+        }
         public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<ComputerOrder> ComputerOrder { get; set; }
@@ -15,6 +18,7 @@ namespace ComputerWeb.Models.EF
         public virtual DbSet<CustomerType> CustomerType { get; set; }
         public virtual DbSet<CustomerWords> CustomerWords { get; set; }
         public virtual DbSet<Evaluate> Evaluate { get; set; }
+        public virtual DbSet<Favorites> Favorites { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<PaymentType> PaymentType { get; set; }
         public virtual DbSet<PriceList> PriceList { get; set; }
@@ -22,6 +26,7 @@ namespace ComputerWeb.Models.EF
         public virtual DbSet<ProductClass> ProductClass { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Province> Province { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCart { get; set; }
         public virtual DbSet<SystemRole> SystemRole { get; set; }
         public virtual DbSet<SystemUser> SystemUser { get; set; }
 
@@ -41,7 +46,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheArea)
-                    .HasName("UQ__Area__610676EF11D36808")
+                    .HasName("UQ__Area__610676EF91DE7A2F")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -69,7 +74,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheCity)
-                    .HasName("UQ__City__895EB7AEB98D51F4")
+                    .HasName("UQ__City__895EB7AE3C16E219")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -97,7 +102,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheOrder)
-                    .HasName("UQ__Computer__93391F8B4C83208D")
+                    .HasName("UQ__Computer__93391F8B6C7F4D29")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objId");
@@ -244,7 +249,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheCustomerType)
-                    .HasName("UQ__Customer__639120DADDF9F004")
+                    .HasName("UQ__Customer__639120DA88AE4B68")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -277,7 +282,7 @@ namespace ComputerWeb.Models.EF
                     .HasPrincipalKey(p => p.TheOrder)
                     .HasForeignKey(d => d.TheOrder)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("CustomerFK");
+                    .HasConstraintName("CustomerWordsFK");
             });
 
             modelBuilder.Entity<Evaluate>(entity =>
@@ -303,12 +308,34 @@ namespace ComputerWeb.Models.EF
                     .HasConstraintName("EvaluateFK");
             });
 
+            modelBuilder.Entity<Favorites>(entity =>
+            {
+                entity.HasKey(e => e.ObjId);
+
+                entity.Property(e => e.ObjId).HasColumnName("objId");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.UserId).HasColumnName("userID");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Favorites)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FavoritesFK1");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Favorites)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FavoritesFK");
+            });
+
             modelBuilder.Entity<Payment>(entity =>
             {
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.ThePayment)
-                    .HasName("UQ__Payment__F1CCBDF6DCE83319")
+                    .HasName("UQ__Payment__F1CCBDF686A80284")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -342,14 +369,13 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.ThePayment)
-                    .HasName("UQ__PaymentT__F1CCBDF63F77E1B8")
+                    .HasName("UQ__PaymentT__F1CCBDF6FD5D2EA3")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.BigImg)
                     .HasColumnName("bigImg")
-                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MethodName)
@@ -359,12 +385,10 @@ namespace ComputerWeb.Models.EF
                 entity.Property(e => e.Purl)
                     .IsRequired()
                     .HasColumnName("purl")
-                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SmallImg)
                     .HasColumnName("smallImg")
-                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.ThePayment).HasColumnName("thePayment");
@@ -409,14 +433,13 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.ProductId)
-                    .HasName("UQ__Product__2D10D16B296D2177")
+                    .HasName("UQ__Product__2D10D16B4AFAB2E6")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
 
                 entity.Property(e => e.BigImg)
                     .HasColumnName("bigImg")
-                    .HasMaxLength(120)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Cpu)
@@ -456,7 +479,6 @@ namespace ComputerWeb.Models.EF
 
                 entity.Property(e => e.SmallImg)
                     .HasColumnName("smallImg")
-                    .HasMaxLength(120)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Timetommarket)
@@ -494,7 +516,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheProductType)
-                    .HasName("UQ__ProductT__916BBD28EF6074B1")
+                    .HasName("UQ__ProductT__916BBD28C21DBD2F")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -519,7 +541,7 @@ namespace ComputerWeb.Models.EF
                 entity.HasKey(e => e.ObjId);
 
                 entity.HasIndex(e => e.TheProvince)
-                    .HasName("UQ__Province__F488AD4868618D25")
+                    .HasName("UQ__Province__F488AD48C1BE0DC7")
                     .IsUnique();
 
                 entity.Property(e => e.ObjId).HasColumnName("objID");
@@ -533,6 +555,30 @@ namespace ComputerWeb.Models.EF
                 entity.Property(e => e.TheProvince).HasColumnName("theProvince");
             });
 
+            modelBuilder.Entity<ShoppingCart>(entity =>
+            {
+                entity.HasKey(e => e.ObjId);
+
+                entity.Property(e => e.ObjId).HasColumnName("objId");
+
+                entity.Property(e => e.Num).HasColumnName("num");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.UserId).HasColumnName("userID");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.ShoppingCart)
+                    .HasPrincipalKey(p => p.ProductId)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("ShoppingCartFK1");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.ShoppingCart)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("ShoppingCartFK");
+            });
+
             modelBuilder.Entity<SystemRole>(entity =>
             {
                 entity.HasKey(e => e.Objid);
@@ -540,7 +586,7 @@ namespace ComputerWeb.Models.EF
                 entity.ToTable("systemRole");
 
                 entity.HasIndex(e => e.TheRole)
-                    .HasName("UQ__systemRo__AA7A03D3D04F6AE6")
+                    .HasName("UQ__systemRo__AA7A03D3F32EA7AB")
                     .IsUnique();
 
                 entity.Property(e => e.Objid).HasColumnName("objid");

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models.EF
+namespace ComputerWeb.Models.EF1
 {
     public partial class Customer
     {
@@ -9,6 +9,8 @@ namespace ComputerWeb.Models.EF
         {
             ComputerOrder = new HashSet<ComputerOrder>();
             Consignee = new HashSet<Consignee>();
+            Favorites = new HashSet<Favorites>();
+            ShoppingCart = new HashSet<ShoppingCart>();
         }
 
         public int ObjId { get; set; }
@@ -22,5 +24,7 @@ namespace ComputerWeb.Models.EF
         public CustomerType TheCustomerTypeNavigation { get; set; }
         public ICollection<ComputerOrder> ComputerOrder { get; set; }
         public ICollection<Consignee> Consignee { get; set; }
+        public ICollection<Favorites> Favorites { get; set; }
+        public ICollection<ShoppingCart> ShoppingCart { get; set; }
     }
 }

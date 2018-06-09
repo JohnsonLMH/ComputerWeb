@@ -1,6 +1,6 @@
 ﻿@{Layout = null;}
-@using ComputerWeb.Models.EF;
-@model List<Product>
+@using ComputerWeb.Models.EF1;
+@model Tuple<List<Class>, List<SystemUser>>
 
 <!doctype html>
 <html>
@@ -73,8 +73,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="manage1" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID">
-                                <button class="btn btn-info btn-search">查找</button>
+                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch1">
+                                <button class="btn btn-info btn-search" onclick="serch()">查找</button>
                             </div>
                             <div class="panel-heading">
                                 商品列表
@@ -92,11 +92,14 @@
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach (var item in Model)
-                                            {
+                                        <tbody id="product_1">
+                                            @{
+                                                
+                                                int i = 1;
+                                                foreach (var item in Model.Item1)
+                                                {
                                                 <tr class="gradeX">
-                                                    <td>@item.ObjId</td>
+                                                    <td>@i</td>
                                                     <td>@item.ProductId</td>
                                                     <td>@item.ProductName</td>
                                                     <td class="center">@item.Timetommarket</td>
@@ -106,8 +109,10 @@
                                                         <button type="submit" class="btn">删除</button>
                                                     </td>
                                                 </tr>
+                                                    i++;
 
-                                            }
+                                                }
+                                                }
                                         </tbody>
                                     </table>
                                 </div>
@@ -116,7 +121,7 @@
                         </div>
                         <div class="tab-pane" id="manage2" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch2">
                                 <button class="btn btn-info btn-search">查找</button>
                             </div>
                             <div class="panel-heading">
@@ -134,11 +139,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach(var item in Model) {
+                                            @foreach(var item in Model.Item1) {
                                                 <tr class="gradeX">
-                                                    <td></td>
-                                                    <td>Lynx</td>
-                                                    <td class="center">-</td>
+                                                    <td>@item.UserId</td>
+                                                    <td>@item.Cname</td>
+                                                    <td class="center">@item.MobilePhone</td>
                                                     <td>
                                                         <button type="submit" class="btn">删除</button>
                                                     </td>
@@ -152,7 +157,7 @@
                         </div>
                         <div class="tab-pane" id="manage3" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch3">
                                 <button class="btn btn-info btn-search">查找</button>
                             </div>
                             <div class="panel-heading">
@@ -169,38 +174,37 @@
                                                 <th>收货人</th>
                                                 <th>收货人联系方式</th>
                                                 <th>订单状态</th>
-                                                <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="gradeC">
-                                                <td>Misc</td>
-                                                <td>IE Mobile</td>
-                                                <td>Windows Mobile 6</td>
-                                                <td class="center">-</td>
-                                                <td class="center">C</td>
-                                                <td>
-                                                    <button class="btn btn-default">Action</button>
-                                                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li>
-                                                            <a href="#">待付款</a>
-                                                        </li>
-                                                        <li class="disabled">
-                                                            <a href="#">已付款</a>
-                                                        </li>
-                                                        <li class="disabled">
-                                                            <a href="#">配送中</a>
-                                                        </li>
-                                                        <li class="disabled">
-                                                            <a href="#">已配送</a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <button type="submit" class="btn">删除</button>
-                                                </td>
-                                            </tr>
+                                            @foreach (var item in Model.Item1)
+    {
+                                        <tr class="gradeC">
+                                            <td>@item.TheOrder</td>
+                                            <td>@item.ProductId</td>
+                                            <td>@item.OrderTime</td>
+                                            <td class="center">@item.Conname</td>
+                                            <td class="center">@item.ConMobilePhone</td>
+                                            <td>
+                                                <button class="btn btn-default">@item.OrderState</button>
+                                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="#">待付款</a>
+                                                    </li>
+                                                    <li class="disabled">
+                                                        <a href="#">已付款</a>
+                                                    </li>
+                                                    <li class="disabled">
+                                                        <a href="#">配送中</a>
+                                                    </li>
+                                                    <li class="disabled">
+                                                        <a href="#">已配送</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+}
                                         </tbody>
                                     </table>
                                 </div>
@@ -209,7 +213,7 @@
                         </div>
                         <div class="tab-pane" id="manage4" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID">
+                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch4">
                                 <button class="btn btn-info btn-search">查找</button>
                             </div>
                             <div class="panel-heading">
@@ -227,12 +231,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(var item in Model.Item2)
+                                            {
                                             <tr class="gradeC">
-                                                <td>Misc</td>
-                                                <td>IE Mobile</td>
-                                                <td>Windows Mobile 6</td>
-                                                <td>Windows Mobile 6</td>
+                                                <td>@item.UserId</td>
+                                                <td>@item.Username</td>
+                                                <td>@item.MobilePhone</td>
+                                                <td>@item.UserState</td>
                                             </tr>
+                                            }
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -261,12 +269,12 @@
                                         </thead>
                                         <tbody>
                                             <tr class="gradeU">
-                                                <td>Other browsers</td>
+                                                <td>000</td>
                                                 <td>All others</td>
                                                 <td>-</td>
                                                 <td class="center">-</td>
                                                 <td class="center">
-                                                    <button type="submit" class="btn">删除</button>
+                                                    <button type="submit" class="btn">保存</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -305,5 +313,6 @@
     <script src="~/lib/jquery/dist/jquery-1.11.0.min.js"></script>
     <!-- 包括所有已编译的插件 -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

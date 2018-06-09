@@ -1,4 +1,4 @@
-﻿using ComputerWeb.Models.EF;
+﻿using ComputerWeb.Models.EF1;
 using System;
 using System.Collections.Generic;
 using System.Linq;

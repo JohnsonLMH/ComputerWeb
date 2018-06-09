@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ComputerWeb.Models.EF
+namespace ComputerWeb.Models.EF1
 {
     public partial class ComputerOrder
     {

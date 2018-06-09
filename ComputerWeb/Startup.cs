@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ComputerWeb.Models;
-using ComputerWeb.Models.EF;
+using ComputerWeb.Models.EF1;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,8 +27,15 @@ namespace ComputerWeb
         {
             services.AddDbContext<computerdbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();
             services.AddTransient<selectdb>();
+          //  services.AddIdentity<ApplicationUser, IdentityRole>()
+               // .AddEntityFrameworkStores<ApplicationDbContext>()
+              //  .AddDefaultTokenProviders();
+
+            // Add application services.
+           // services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
