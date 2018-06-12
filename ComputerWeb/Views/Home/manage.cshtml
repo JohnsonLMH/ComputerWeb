@@ -74,7 +74,7 @@
                         <div class="tab-pane active" id="manage1" role="tabpanel">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="请输入商品ID" id="serch1">
-                                <button class="btn btn-info btn-search" onclick="serch()">查找</button>
+                                <button class="btn btn-info btn-search" onclick="serch1()">查找</button>
                             </div>
                             <div class="panel-heading">
                                 商品列表
@@ -94,25 +94,23 @@
                                         </thead>
                                         <tbody id="product_1">
                                             @{
-                                                
                                                 int i = 1;
                                                 foreach (var item in Model.Item1)
                                                 {
-                                                <tr class="gradeX">
-                                                    <td>@i</td>
-                                                    <td>@item.ProductId</td>
-                                                    <td>@item.ProductName</td>
-                                                    <td class="center">@item.Timetommarket</td>
-                                                    <td class="center">@item.ProductState</td>
-                                                    <td>
-                                                        <button type="submit" class="btn">修改</button>
-                                                        <button type="submit" class="btn">删除</button>
-                                                    </td>
-                                                </tr>
+                                                    <tr class="gradeX">
+                                                        <td>@i</td>
+                                                        <td>@item.ProductId</td>
+                                                        <td>@item.ProductName</td>
+                                                        <td class="center">@item.Timetommarket</td>
+                                                        <td class="center">@item.ProductState</td>
+                                                        <td>
+                                                            <button type="submit" class="btn">修改</button>
+                                                            <button type="submit" class="btn">删除</button>
+                                                        </td>
+                                                    </tr>
                                                     i++;
-
                                                 }
-                                                }
+                                             }
                                         </tbody>
                                     </table>
                                 </div>
@@ -121,8 +119,8 @@
                         </div>
                         <div class="tab-pane" id="manage2" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch2">
-                                <button class="btn btn-info btn-search">查找</button>
+                                <input type="text" class="form-control" placeholder="请输入用户ID" id="serch2">
+                                <button class="btn btn-info btn-search" onclick="serch2()">查找</button>
                             </div>
                             <div class="panel-heading">
                                 用户列表
@@ -138,7 +136,7 @@
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="user_1">
                                             @foreach(var item in Model.Item1) {
                                                 <tr class="gradeX">
                                                     <td>@item.UserId</td>
@@ -157,8 +155,8 @@
                         </div>
                         <div class="tab-pane" id="manage3" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch3">
-                                <button class="btn btn-info btn-search">查找</button>
+                                <input type="text" class="form-control" placeholder="请输入订单号" id="serch3">
+                                <button class="btn btn-info btn-search" onclick="serch3()">查找</button>
                             </div>
                             <div class="panel-heading">
                                 订单列表
@@ -176,35 +174,35 @@
                                                 <th>订单状态</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="order_1">
                                             @foreach (var item in Model.Item1)
-    {
-                                        <tr class="gradeC">
-                                            <td>@item.TheOrder</td>
-                                            <td>@item.ProductId</td>
-                                            <td>@item.OrderTime</td>
-                                            <td class="center">@item.Conname</td>
-                                            <td class="center">@item.ConMobilePhone</td>
-                                            <td>
-                                                <button class="btn btn-default">@item.OrderState</button>
-                                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a href="#">待付款</a>
-                                                    </li>
-                                                    <li class="disabled">
-                                                        <a href="#">已付款</a>
-                                                    </li>
-                                                    <li class="disabled">
-                                                        <a href="#">配送中</a>
-                                                    </li>
-                                                    <li class="disabled">
-                                                        <a href="#">已配送</a>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-}
+                                            {
+                                                <tr class="gradeC">
+                                                    <td>@item.TheOrder</td>
+                                                    <td>@item.ProductId</td>
+                                                    <td>@item.OrderTime</td>
+                                                    <td class="center">@item.Conname</td>
+                                                    <td class="center">@item.ConMobilePhone</td>
+                                                    <td>
+                                                        <button class="btn btn-default">@item.OrderState</button>
+                                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="#">待付款</a>
+                                                            </li>
+                                                            <li class="disabled">
+                                                                <a href="#">已付款</a>
+                                                            </li>
+                                                            <li class="disabled">
+                                                                <a href="#">配送中</a>
+                                                            </li>
+                                                            <li class="disabled">
+                                                                <a href="#">已配送</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -213,8 +211,8 @@
                         </div>
                         <div class="tab-pane" id="manage4" role="tabpanel">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID" id="serch4">
-                                <button class="btn btn-info btn-search">查找</button>
+                                <input type="text" class="form-control" placeholder="请输入员工ID" id="serch4">
+                                <button class="btn btn-info btn-search" onclick="serch4()">查找</button>
                             </div>
                             <div class="panel-heading">
                                 员工列表
@@ -230,7 +228,7 @@
                                                 <th>员工状态</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="staff_1">
                                             @foreach(var item in Model.Item2)
                                             {
                                             <tr class="gradeC">
@@ -247,13 +245,9 @@
 
                             </div>
                         </div>
-                        <div class="tab-pane" id="manage5" role="tabpanel">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="请输入商品ID">
-                                <button class="btn btn-info btn-search">查找</button>
-                            </div>
+                        <div class="tab-pane" id="manage5" role="tabpanel">                            
                             <div class="panel-heading">
-                                订单列表
+                                个人信息
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -280,7 +274,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>

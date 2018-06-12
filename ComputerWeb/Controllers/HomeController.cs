@@ -87,11 +87,11 @@ namespace ComputerWeb.Controllers
         [HttpPost]
         public List<string> manage(string msg)
         {
-            
-            if (Request.Form["serch"].ToString()!="")
+            //后台商品查询
+            if (Request.Form["serch1"].ToString()!="")
             {
                 string remsg;
-                remsg = Request.Form["serch"].ToString();
+                remsg = Request.Form["serch1"].ToString();
                 var pro = _computerdbContext.Product.Where(ID => ID.ProductId == int.Parse(remsg));
                 List<string> proList = new List<string>();
                 foreach (var item in pro)
@@ -103,6 +103,58 @@ namespace ComputerWeb.Controllers
                 }
                 return proList;
             }
+            //后台用户查询
+            if (Request.Form["serch2"].ToString() != "")
+            {
+                string remsg;
+                remsg = Request.Form["serch2"].ToString();
+                var user = _computerdbContext.Customer.Where(ID => ID.UserId == int.Parse(remsg));
+                List<string> userList = new List<string>();
+                foreach (var item in user)
+                {
+                    userList.Add(item.UserId.ToString());
+                    userList.Add(item.Cname.ToString());
+                    userList.Add(item.MobilePhone.ToString());
+                }
+                return userList;
+            }
+
+            //后台订单查询
+            if (Request.Form["serch3"].ToString() != "")
+            {
+                string remsg;
+                remsg = Request.Form["serch3"].ToString();
+                var order = _computerdbContext.ComputerOrder.Where(ID => ID.TheOrder == int.Parse(remsg));
+                List<string> orderList = new List<string>();
+                foreach (var item in order)
+                {
+                    orderList.Add(item.TheOrder.ToString());
+                    orderList.Add(item.ProductId.ToString());
+                    orderList.Add(item.OrderTime.ToString());
+                    orderList.Add(item.UserId.ToString());
+                    orderList.Add(item.UserId.ToString());
+                    orderList.Add(item.OrderState.ToString());
+                }
+                return orderList;
+            }
+
+            //后台员工信息查询
+            if (Request.Form["serch4"].ToString() != "")
+            {
+                string remsg;
+                remsg = Request.Form["serch4"].ToString();
+                var staff = _computerdbContext.SystemUser.Where(ID => ID.UserId == int.Parse(remsg));
+                List<string> staffList = new List<string>();
+                foreach (var item in staff)
+                {
+                    staffList.Add(item.UserId.ToString());
+                    staffList.Add(item.Username.ToString());
+                    staffList.Add(item.MobilePhone.ToString());
+                    staffList.Add(item.UserState.ToString());
+                }
+                return staffList;
+            }
+
             return null;
         }
         public IActionResult Error()
