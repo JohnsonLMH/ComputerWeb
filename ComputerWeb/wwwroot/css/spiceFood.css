@@ -454,3 +454,35 @@ label {
 .span12 {
     padding-left: 100px;
 }
+
+.m-grid .grid-item .grid-panel {
+    margin-top: 16px;
+    border: 1px solid #e8e8e8;
+}
+
+
+.m-grid .row .col {
+    float: left;
+    min-height: 1px;
+    position: relative;
+}
+
+
+.g_price-highlight span {
+    color: #F40;
+}
+
+
+.g_price strong {
+    color: #F40;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: arial;
+}
+
+.m-grid .info-cont .seller {
+    background: #f7f7f7;
+    border-top: 1px solid #e8e8e8;
+    height: 36px;
+    line-height: 36px;
+}

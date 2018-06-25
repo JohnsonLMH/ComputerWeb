@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using ComputerWeb.Models;
 using ComputerWeb.Models.AccountViewModels;
 using ComputerWeb.Services;
+using ComputerWeb.Models.EF1;
 
 namespace ComputerWeb.Controllers
 {
@@ -24,13 +25,17 @@ namespace ComputerWeb.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly computerdbContext _computerdbContext;
+
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,computerdbContext computerdbContext)
         {
+            _computerdbContext = computerdbContext;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
@@ -84,7 +89,7 @@ namespace ComputerWeb.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return RedirectToAction("mall", "Home");
         }
 
         [HttpGet]
@@ -217,6 +222,7 @@ namespace ComputerWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            var http = Request;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -224,6 +230,19 @@ namespace ComputerWeb.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Customer customer = new Customer();
+                    customer.Cname = model.Cname;
+                    customer.Email = model.Email;
+                    customer.Pwd = model.Password;
+                    customer.MobilePhone = model.MobilePhone;
+                    var c=_computerdbContext.Customer.OrderByDescending(cu=>cu.UserId).First();
+                    customer.UserId = c.UserId+1;
+                    customer.TheCustomerType = 1;
+
+                    _computerdbContext.Add(customer);
+                    _computerdbContext.SaveChanges();
+                    
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -238,7 +257,7 @@ namespace ComputerWeb.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return RedirectToAction("register","Home");
         }
 
         [HttpPost]

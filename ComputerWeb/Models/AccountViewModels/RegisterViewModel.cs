@@ -23,5 +23,13 @@ namespace ComputerWeb.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name ="Cname")]
+        public string Cname { get; set; }
+
+        [Required]
+        [Display(Name = "MobilePhone")]
+        public string MobilePhone { get; set; }
     }
 }

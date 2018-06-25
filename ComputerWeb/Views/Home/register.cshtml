@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@using ComputerWeb.Models.AccountViewModels
+@model RegisterViewModel
+
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -22,7 +25,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3 form-box">
-						<form role="form" action="" method="post" class="registration-form">
+						<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" role="form" method="post" class="registration-form">
 							<div class="form-top">
 								<div class="form-top-left">
 									<h3>注册</h3>
@@ -32,33 +35,29 @@
 									<i class="fa fa-user"></i>
 								</div>
 							</div>
-							<div class="form-bottom">
-								<div class="form-group">
-									<label class="sr-only" for="form-last-name">用户名</label>
-									<input type="text" name="form-last-name" placeholder="user name..." class="form-last-name form-control" id="form-last-name" required autofocus>
-								</div>
-								<div class="form-group">
-									<label class="sr-only" for="form-email">电子邮箱</label>
-									<input type="text" name="form-email" placeholder="address@site.com..." class="form-email form-control" id="form-email" multiple>
-								</div>
-								<div class="form-group">
-									<label class="sr-only" for="form-password">密码</label>
-									<input type="text" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required autofocus>
-								</div>
-								<div class="form-group">
-									<label class="sr-only" for="form-repeat-password">确认密码</label>
-									<input type="text" name="form-repeat-password" placeholder="Repeat Password..." class="form-repeat-password form-control" id="form-repeat-password" required autofocus>
-								</div>
-								<div class="form-group">
-									<label class="sr-only" for="form-realy-name">真实姓名</label>
-									<input type="text" name="form-realy-name" placeholder="Name..." class="form-realy-name form-control" id="form-realy-name" required autofocus>
-								</div>
-								<div class="form-group">
-									<label class="sr-only" for="form-brithday">出生年月</label>
-									<input type="text" name="form-birthday" placeholder="Birthday..." class="form-birthday form-control" id="form-birthday" required autofocus>
-								</div>
-								<button type="button" class="btn btn-block">提交</button>
-							</div>
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    <label asp-for="Cname" class="sr-only" for="Cname">用户名</label>
+                                    <input asp-for="Cname" type="text" name="Cname" placeholder="user name..." class="form-last-name form-control" id="Cname" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="sr-only" for="Email">电子邮箱</label>
+                                    <input asp-for="Email" type="text" name="Email" placeholder="address@site.com..." class="form-email form-control" id="form-email" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="sr-only" for="Password">密码</label>
+                                    <input asp-for="Password" type="password" name="Password" placeholder="Password..." class="form-password form-control" id="form-password" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword" class="sr-only" for="ConfirmPassword">确认密码</label>
+                                    <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" placeholder="Repeat Password..." class="form-repeat-password form-control" id="form-repeat-password" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MobilePhone" class="sr-only" for="MobilePhone">电话号码</label>
+                                    <input asp-for="MobilePhone" type="text" name="MobilePhone" placeholder="PhoneNumber..." class="form-email form-control" id="form-email" multiple>
+                                </div>
+                                <button type="submit" class="btn btn-block">注册</button>
+                            </div>
 						</form>
 					</div>
 				</div>

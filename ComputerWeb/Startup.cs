@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ComputerWeb.Data;
 using ComputerWeb.Models;
 using ComputerWeb.Models.EF1;
+using ComputerWeb.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -25,16 +27,21 @@ namespace ComputerWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<computerdbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<selectdb>();
-          //  services.AddIdentity<ApplicationUser, IdentityRole>()
-               // .AddEntityFrameworkStores<ApplicationDbContext>()
-              //  .AddDefaultTokenProviders();
+            //  services.AddIdentity<ApplicationUser, IdentityRole>()
+            // .AddEntityFrameworkStores<ApplicationDbContext>()
+            //  .AddDefaultTokenProviders();
 
             // Add application services.
-           // services.AddTransient<IEmailSender, EmailSender>();
-
+            // services.AddTransient<IEmailSender, EmailSender>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+             .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddMvc();
         }
 
@@ -52,7 +59,7 @@ namespace ComputerWeb
             }
 
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
