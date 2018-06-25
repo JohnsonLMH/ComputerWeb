@@ -1,5 +1,10 @@
 ﻿@{Layout = null;}
 @using ComputerWeb.Models.EF1;
+@using Microsoft.AspNetCore.Identity
+@using ComputerWeb.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @model Tuple<List<Class>, List<SystemUser>>
 
 <!doctype html>
@@ -35,20 +40,20 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-user"></span>
-                                用户名
-                            </a>
-                        </li>
-                        <li>
-                            <a href="SignIn.html">
-                                <span class="glyphicon glyphicon-log-in"></span>
-                                退出
-                            </a>
-                        </li>
-                    </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    @UserManager.GetUserName(User)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="SignIn.html">
+                                    <span class="glyphicon glyphicon-log-in"></span>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
                 </div>
             </div>
 
@@ -95,22 +100,22 @@
                                         <tbody id="product_1">
                                             @{
                                                 int i = 1;
-                                                foreach (var item in Model.Item1)
-                                                {
-                                                    <tr class="gradeX">
-                                                        <td>@i</td>
-                                                        <td>@item.ProductId</td>
-                                                        <td>@item.ProductName</td>
-                                                        <td class="center">@item.Timetommarket</td>
-                                                        <td class="center">@item.ProductState</td>
-                                                        <td>
-                                                            <button type="submit" class="btn">修改</button>
-                                                            <button type="submit" class="btn">删除</button>
-                                                        </td>
-                                                    </tr>
-                                                    i++;
-                                                }
-                                             }
+                                            foreach (var item in Model.Item1)
+                                            {
+                                                <tr class="gradeX">
+                                                    <td>@i</td>
+                                                    <td>@item.ProductId</td>
+                                                    <td>@item.ProductName</td>
+                                                    <td class="center">@item.Timetommarket</td>
+                                                    <td class="center">@item.ProductState</td>
+                                                    <td>
+                                                        <button type="submit" class="btn">修改</button>
+                                                        <button type="submit" class="btn">删除</button>
+                                                    </td>
+                                                </tr>
+                                                i++;
+                                            }
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -137,7 +142,8 @@
                                             </tr>
                                         </thead>
                                         <tbody id="user_1">
-                                            @foreach(var item in Model.Item1) {
+                                            @foreach (var item in Model.Item1)
+                                            {
                                                 <tr class="gradeX">
                                                     <td>@item.UserId</td>
                                                     <td>@item.Cname</td>
@@ -229,23 +235,23 @@
                                             </tr>
                                         </thead>
                                         <tbody id="staff_1">
-                                            @foreach(var item in Model.Item2)
+                                            @foreach (var item in Model.Item2)
                                             {
-                                            <tr class="gradeC">
-                                                <td>@item.UserId</td>
-                                                <td>@item.Username</td>
-                                                <td>@item.MobilePhone</td>
-                                                <td>@item.UserState</td>
-                                            </tr>
+                                                <tr class="gradeC">
+                                                    <td>@item.UserId</td>
+                                                    <td>@item.Username</td>
+                                                    <td>@item.MobilePhone</td>
+                                                    <td>@item.UserState</td>
+                                                </tr>
                                             }
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="tab-pane" id="manage5" role="tabpanel">                            
+                        <div class="tab-pane" id="manage5" role="tabpanel">
                             <div class="panel-heading">
                                 个人信息
                             </div>

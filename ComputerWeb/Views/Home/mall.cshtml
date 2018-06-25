@@ -16,12 +16,10 @@
 
     <div class="global-header clearfix col-lg-11">
         <div class="search-box">
-            <form action="//search.zol.com.cn/s/all.php">
-                <input id="J_keywords" type="text" class="skey" name="kword" value="请输入您要找的产品" data-source="" autocomplete="off" style="color: rgb(153, 153, 153);">
-                <input type="submit" class="sbtn" value="搜索">
-            </form>
+                <input id="J_keywords" type="text" class="skey" placeholder="请输入您要找的产品" data-source="" autocomplete="off" style="color: rgb(153, 153, 153);">
+                <button class="btn btn-danger" onclick="productsearch()">搜索</button>
             <div>
-                <a class="advanced-search" asp-area="" asp-controller="Home" asp-action="serch">高级搜索</a>
+                <a class="advanced-search" asp-area="" asp-controller="Home" asp-action="Searchpro">高级搜索</a>
             </div>
         </div>
     </div>
@@ -722,5 +720,7 @@
     <script src="~/lib/jquery/jquery-1.11.0.min.js"></script>
     <!-- 包括所有已编译的插件 -->
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/js/main.js"></script>
 </body>
 </html>

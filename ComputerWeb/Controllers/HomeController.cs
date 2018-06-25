@@ -157,6 +157,47 @@ namespace ComputerWeb.Controllers
 
             return null;
         }
+        public ActionResult Searchpro()
+        {
+            List<Product> itemlist = new List<Product>();
+            if(Request.Query["text"].ToString() != "")
+            {
+                string text = Request.Query["text"].ToString();
+                var proItem = from pInfo in _computerdbContext.Product
+                            where pInfo.ProductName.Contains(text)
+                            select new Product
+                            {
+                                ProductName = pInfo.ProductName,
+                                Price = pInfo.Price,
+                                BigImg = pInfo.BigImg
+                            };
+                foreach (var item in proItem)
+                {
+                    itemlist.Add(item);
+                }
+                ViewData["pro"] = itemlist;
+                return View("serch");
+            }
+            else
+            {
+                var proItem = from pInfo in _computerdbContext.Product
+                              where pInfo.ObjId>=0
+                              select new Product
+                              {
+                                  ProductName = pInfo.ProductName,
+                                  Price = pInfo.Price,
+                                  BigImg = pInfo.BigImg
+                              };
+                foreach (var item in proItem)
+                {
+                    itemlist.Add(item);
+                }
+                ViewData["pro"] = itemlist;
+                return View("serch");
+            }
+            
+                
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

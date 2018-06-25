@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using ComputerWeb.Models.EF1
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -16,10 +17,8 @@
 
     <div class="global-header clearfix col-lg-11">
         <div class="search-box">
-            <form action="//search.zol.com.cn/s/all.php">
-                <input id="J_keywords" type="text" class="skey" name="kword" value="请输入您要找的产品" data-source="" autocomplete="off" style="color: rgb(153, 153, 153);">
-                <input type="submit" class="sbtn" value="搜索">
-            </form>
+            <input id="J_keywords" type="text" class="skey" placeholder="请输入您要找的产品品牌英文名" data-source="" autocomplete="off" style="color: rgb(153, 153, 153);">
+            <button class="btn btn-danger" onclick="productsearch()">搜索</button>
         </div>
     </div>
 
@@ -401,42 +400,42 @@
             </form>
         </div>
     </div>
+
     <div class="m-grid" data-spm="">
         <div class="grid-container row">
-            <div class="grid-item col">
-                <div class="grid-panel">
-                    <div class="img-box col-lg-11 col-lg-offset-1">
-                        <span class="special-tag-cont"></span>
-                        <span class="prod-tag icon-supple-4-ishot"></span>
-                        <a class="img-a" trace="vertical_spu" trace-idx="0" href="#" target="_blank">
-                            <img class="search img" src="~/images/53ce1aba44242.jpg" width="180px" height="180px">
-                        </a>
-                    </div>
-                    <div class="info-cont">
-                        <div class="title-row  col-lg-11 col-lg-offset-1">
-                            <a class="product-title" trace="vertical_spu" trace-idx="0" title="外星人" href="#" target="_blank">
-                                外星人
-                                <span class="feature">
-                                    <span class="feature-item">发烧级显卡</span>，
-                                    <span class="feature-item">背光键盘</span>，
-                                    <span class="feature-item">IPS屏</span>
-                                </span>
+            @foreach (var item in ViewData["pro"] as List<Product>)
+            {
+                <div class="grid-item col">
+                    <div class="grid-panel">
+                        <div class="img-box col-lg-11 col-lg-offset-1">
+                            <span class="special-tag-cont"></span>
+                            <span class="prod-tag icon-supple-4-ishot"></span>
+                            <a class="img-a" trace="vertical_spu" trace-idx="0" href="#" target="_blank">
+                                <img class="search img" src="~/images/@{@item.BigImg}.jpg" width="180px" height="180px">
                             </a>
                         </div>
-                        <div class="sale-row row">
-                            <div class="col col-lg-11 col-lg-offset-1">
-                                <span class="price g_price g_price-highlight col-lg-11 ">
-                                    <span>¥</span><strong>5172</strong>
-                                </span>
+                        <div class="info-cont">
+                            <div class="title-row  col-lg-11 col-lg-offset-1">
+                                <a class="product-title" trace="vertical_spu" trace-idx="0" title="外星人" href="#" target="_blank">
+                                    @item.ProductName
+                                </a>
                             </div>
-                        </div>
-                        <div class="info-row seller col-lg-11 col-lg-offset-1">
-                            <a trace="vertical_seller" class="seller-link" href="#" target="_blank">购买</a>
-                            <a trace="vertical_seller" class="seller-link" href="#">加入购物车</a>
+                            <div class="sale-row row">
+                                <div class="col col-lg-11 col-lg-offset-1">
+                                    <span class="price g_price g_price-highlight col-lg-11 ">
+                                        <span>¥</span><strong>@item.Price</strong>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info-row seller col-lg-11 col-lg-offset-1">
+                                <a trace="vertical_seller" class="seller-link" href="#" target="_blank">购买</a>
+                                <a trace="vertical_seller" class="seller-link" href="#">加入购物车</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+
         </div>
     </div>
 
@@ -446,5 +445,7 @@
     <script src="~/lib/jquery/dist/jquery-1.11.0.min.js"></script>
     <!-- 包括所有已编译的插件 -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/js/main.js"></script>
 </body>
 </html>

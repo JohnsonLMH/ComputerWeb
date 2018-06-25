@@ -188,3 +188,8 @@ function appendhtml4(data) {
         i++;
     }
 }
+
+function productsearch() {
+    var $text = $("#J_keywords").val();
+    window.location.assign("http://" + location.host + "/Home/Searchpro/?text=" + $text);
+}
